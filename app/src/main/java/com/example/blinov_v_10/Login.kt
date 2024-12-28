@@ -72,7 +72,7 @@ fun Login(navController: NavController) {
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResource(R.drawable.Frame),
+            painter = painterResource(R.drawable.frame),
             contentDescription = "Taxi Icon",
             modifier = Modifier.size(200.dp)
         )
@@ -129,8 +129,8 @@ fun Login(navController: NavController) {
                 }
             },
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFFFFC727),
-                contentColor = Color.Black
+                containerColor = Color(0xFF58BA0B),
+                contentColor = Color.White
             ),
             modifier = Modifier
                 .padding(horizontal = 16.dp)

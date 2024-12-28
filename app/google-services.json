@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "455080767212",
+    "firebase_url": "https://hhjj-42e25-default-rtdb.firebaseio.com",
+    "project_id": "hhjj-42e25",
+    "storage_bucket": "hhjj-42e25.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455080767212:android:521f5ceeeff7a68159ffc9",
+        "android_client_info": {
+          "package_name": "com.example.blinov_v_10"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEHXELgMYGTaM56iaovmgfBA-Vqtl9Qr0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455080767212:android:c727a9cfd410e21b59ffc9",
+        "android_client_info": {
+          "package_name": "com.example.dfdsf"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEHXELgMYGTaM56iaovmgfBA-Vqtl9Qr0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,5 @@
 package com.example.blinov_v_10
 
-import androidx.compose.runtime.R
 import android.os.Bundle
 import android.view.Surface
 import androidx.activity.ComponentActivity
@@ -37,6 +36,8 @@ import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
@@ -44,8 +45,9 @@ import androidx.navigation.NavController
 @Composable
 fun Notice(navController: NavController) {
 
-    var showTips by remember { mutableStateOf(true) }
-    var trackNewOrders by remember { mutableStateOf(false) }
+    var notification by remember { mutableStateOf(true) }
+    var conditions by remember { mutableStateOf(false) }
+    var flights by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -54,9 +56,9 @@ fun Notice(navController: NavController) {
     ) {
 
         Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Start
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
         ) {
 
             IconButton(onClick = { navController.popBackStack() }) {
@@ -68,67 +70,71 @@ fun Notice(navController: NavController) {
             }
 
             Text(
-                text = "Статистика",
+                text = "Уведомления",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                modifier = Modifier.weight(1f)
             )
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Text("За сегодня вы заработали:", fontSize = 16.sp)
-        Text("12 860 руб.", style = MaterialTheme.typography.labelLarge)
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            Column {
-                Text("Выполнено поездок")
-                Text("48", style = MaterialTheme.typography.titleLarge)
-            }
-            Column {
-                Text("Средняя оценка")
-                Text("4.5", style = MaterialTheme.typography.titleLarge, color = Color.Green)
+            IconButton(onClick = { navController.navigate("statistic") }) {
+                Image(
+                    painter = painterResource(id = R.drawable.bell),
+                    contentDescription = "уведомления",
+                    modifier = Modifier
+                        .size(24.dp)
+                        .alpha(0f)
+                )
             }
         }
-        Spacer(modifier = Modifier.height(16.dp))
 
-        Text("Настройки статистики")
+            Spacer(modifier = Modifier.height(26.dp))
 
-        // Здесь изменен цвет галочки
-        Row {
-            Checkbox(
-                checked = showTips,
-                onCheckedChange = { showTips = it },
-                colors = CheckboxDefaults.colors(checkedColor = Color(0xFFFFC727)) // Цвет галочки
-            )
-            Text("Показывать начисленные чаевые")
-        }
-        Spacer(modifier = Modifier.height(8.dp))
+            Text("Оплатите билеты до 22 декабря, в 11:20", fontSize = 20.sp)
+            Spacer(modifier = Modifier.height(26.dp))
 
-        Row {
-            Checkbox(
-                checked = showTips,
-                onCheckedChange = { showTips = it },
-                colors = CheckboxDefaults.colors(checkedColor = Color(0xFFFFC727)) // Цвет галочки
-            )
-            Text("Показывать начисленные чаевые")
-        }
-        Spacer(modifier = Modifier.height(8.dp))
+            Text("Заканчивается время бронирования билетов", fontSize = 20.sp)
+            Spacer(modifier = Modifier.height(26.dp))
 
-        Row {
-            Checkbox(
-                checked = trackNewOrders,
-                onCheckedChange = { trackNewOrders = it },
-                colors = CheckboxDefaults.colors(checkedColor = Color(0xFFFFC727)) // Цвет галочки
-            )
-            Text("Вести статистику новых заказов")
+            Text("Вы успешно забронировали билеты на самолет", fontSize = 20.sp)
+
+            Spacer(modifier = Modifier.height(100.dp))
+
+
+
+
+            Row {
+                Text("Включить уведомления")
+
+                Checkbox(
+                    checked = notification,
+                    onCheckedChange = { notification = it },
+                    colors = CheckboxDefaults.colors(checkedColor = Color(0xFF58BA0B))
+                )
+            }
+            Spacer(modifier = Modifier.height(15.dp))
+
+            Row {
+                Text("Предлагать выгодные условия")
+
+                Checkbox(
+                    checked = conditions,
+                    onCheckedChange = { conditions = it },
+                    colors = CheckboxDefaults.colors(checkedColor = Color(0xFF58BA0B))
+                )
+            }
+            Spacer(modifier = Modifier.height(15.dp))
+
+            Row {
+                Text("Показывать только прямые перелеты")
+
+                Checkbox(
+                    checked = flights,
+                    onCheckedChange = { flights = it },
+                    colors = CheckboxDefaults.colors(checkedColor = Color(0xFF58BA0B))
+                )
+            }
         }
     }
-}
 
 
 
